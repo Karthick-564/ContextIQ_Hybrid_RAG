@@ -17,10 +17,14 @@ env/
 
 # Chroma vector database
 chroma_db/
-vectordb/
+# `vectordb/` contains application source code; only its runtime Chroma data is
+# stored in `chroma_db/` and should remain untracked.
 
 # Uploaded PDFs
 uploads/
+
+# Generated evaluation output
+evaluation/evaluation_results.json
 
 # Data folder
 data/

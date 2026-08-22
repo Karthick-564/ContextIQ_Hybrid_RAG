@@ -1,0 +1,47 @@
+[project]
+name = "clean-rag-chatbot"
+version = "0.1.0"
+description = "Document-grounded PDF question-answering assistant"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "instructor",
+    "langchain",
+    "langchain-community",
+    "langchain-classic",
+    "langchain-google-genai",
+    "langchain-groq",
+    "langchain-huggingface",
+    "langchain-mongodb",
+    "langchain-ollama",
+    "langchain-text-splitters",
+    "nest-asyncio",
+    "numpy",
+    "ollama",
+    "openai",
+    "pandas",
+    "pymongo",
+    "pymupdf",
+    "python-docx",
+    "python-dotenv",
+    "rank-bm25",
+    "ragas",
+    "scikit-learn",
+    "sentence-transformers",
+    "streamlit",
+    "tiktoken",
+    "torch",
+    "transformers",
+    "torchvision",
+    "fastapi>=0.141.1",
+    "uvicorn>=0.52.4",
+    "python-multipart>=0.0.32",
+    "sse-starlette>=3.4.8",
+    "pydantic-settings>=2.15.0",
+    "httpx>=0.28.1",
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+]
+
+[tool.uv]
+package = false
