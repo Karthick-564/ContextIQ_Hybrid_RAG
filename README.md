@@ -44,7 +44,6 @@ The platform features a high-performance **FastAPI backend**, an elegant **Vanil
 ContextIQ is divided into two primary pipelines: **Data Ingestion** (when a user uploads a document) and **Query Retrieval** (when a user asks a question).
 
 ### System Flow Diagram
-
 ```mermaid
 flowchart TD
     %% Styling
@@ -60,15 +59,15 @@ flowchart TD
     end
 
     subgraph Backend["⚙️ FastAPI Backend Server"]
-        API_Docs[/api/v1/documents]:::backend
-        API_Chat[/api/v1/chat/stream]:::backend
-        
+        API_Docs["/api/v1/documents"]:::backend
+        API_Chat["/api/v1/chat/stream"]:::backend
+
         subgraph IngestionPipeline["📥 Data Ingestion Pipeline"]
             PyPDF[PyPDF Loader]
             Splitter[Recursive Text Splitter]
             Embeddings1[Embedding Model<br/>bge-small-en]:::model
         end
-        
+
         subgraph QueryPipeline["🔍 Query & Retrieval Pipeline"]
             QueryRewriter[Query Rewriter LLM]:::model
             HybridSearch[Hybrid Retriever<br/>Semantic + BM25]
@@ -94,13 +93,13 @@ flowchart TD
     API_Chat --> QueryRewriter
     QueryRewriter -- "Standalone Query" --> Embeddings2
     Embeddings2 -- "Query Vector" --> HybridSearch
-    
+
     HybridSearch -- "Search" --> MongoVS
     MongoVS -- "Top Candidates" --> HybridSearch
-    
+
     HybridSearch -- "Initial Chunks" --> Reranker
     Reranker -- "Strictly Reranked Top 8" --> FinalLLM
-    
+
     FinalLLM -- "SSE Stream" --> API_Chat
     API_Chat -. "Stream" .-> UI_Chat
 ```
